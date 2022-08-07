@@ -1,8 +1,13 @@
-from fastapi import FastAPI
 from pydantic import BaseModel
 from uuid import UUID
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
 class Drawer(BaseModel):
     id: UUID
@@ -100,3 +105,19 @@ async def store(drawer: Drawer):
         'data': drawers,
         'status': 200
     }
+
+@app.get("/overview", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/devices", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("devices.html", {"request": request})
+
+@app.get("/records", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("records.html", {"request": request})
+
+@app.get("/settings", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("settings.html", {"request": request})
