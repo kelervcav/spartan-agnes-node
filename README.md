@@ -57,7 +57,7 @@ The Agnes Node is open-sourced software licensed under the [MIT license](https:/
 <!-- CONTACT -->
 ## Contact
 
-Sydel Palinlin - [@Andeng](https://www.linkedin.com/in/sydel-palinlin/) - sydel.palinlin@gmail.com
+Sydel Palinlin - [@Andeng](https://www.linkedin.com/in/sydel-palinlin/) - [sydel.palinlin@gmail.com](mailto:sydel.palinlin@gmail.com)
 
 Project Link: [https://github.com/nerdmonkey/agnes-node](https://github.com/nerdmonkey/agnes-node)
 
