@@ -50,18 +50,23 @@ responseData = {
     'status': 200
 }
 
-@api.get('/')
-async def index():
-    return responseData
+@api.get("/", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("welcome.html", {"request": request})
 
 @api.get('/drawers/all/metrics')
 async def metrics(size: str = 'all', bucket: Optional[int] = None):
     if bucket is None:
-        res = '{"message": "Bucket is required", "status": 422}'
-        return fastapi.Response(content=res,
-                                    media_type="application/json",
-                                    status_code=422
-                                )
+        res = {
+            "message": " is required",
+            "status": 422
+        }
+
+        return fastapi.responses.JSONResponse(
+            content=res,
+            status_code=422
+        )
+
     all = {
         'small': {
             'icon': 'small_icon',
