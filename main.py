@@ -16,17 +16,17 @@ async def read_item(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
 
 @api.get("/overview", response_class=HTMLResponse)
-async def read_item(request: Request):
+async def overview(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 @api.get("/devices", response_class=HTMLResponse)
-async def read_item(request: Request):
+async def devices(request: Request):
     return templates.TemplateResponse("devices.html", {"request": request})
 
 @api.get("/records", response_class=HTMLResponse)
-async def read_item(request: Request):
+async def records(request: Request):
     return templates.TemplateResponse("records.html", {"request": request})
 
 @api.get("/settings", response_class=HTMLResponse)
-async def read_item(request: Request):
+async def settings(request: Request):
     return templates.TemplateResponse("settings.html", {"request": request})
