@@ -1,4 +1,4 @@
-## About Agnes Node
+## Agnes Node
 Agnes Node is a system that will manage all the sensors that are connected in the node.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
