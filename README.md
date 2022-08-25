@@ -22,10 +22,10 @@ uvicorn main:api --reload
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Add devices module
+- [ ] Add devices module
     - [ ] Analog
     - [ ] Digital
-- [] Add authentication
+- [ ] Add authentication
 
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
