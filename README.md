@@ -1,5 +1,5 @@
 ## Agnes Node
-Agnes Node is a system that will manage all the sensors that are connected in the node.
+Agnes Node is a system that will control all of the connected sensors. This node can collect farm data (data acquisition) to assist farmers in leading lives of greater productivity, profitability, and lower input costs.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
