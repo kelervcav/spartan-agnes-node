@@ -8,7 +8,7 @@ Spartan is a sensor node for Agnes, which serve as a swiss army knife for data a
 ## Installation
 1. Clone the repo
 ```sh
-git clone https://github.com/nerdmonkey/agnes-node.git
+git clone https://github.com/nerdmonkey/spartan-agnes-node.git
 ```
 2. Install python packages
 ```sh
