@@ -1,4 +1,4 @@
-[<img src="docs/agnes_support.png" />](https://github.com/nerdmonkey/agnes-node)
+[<img src="docs/agnes_support.png" />](https://github.com/nerdmonkey/spartan-agnes-node)
 
 ## Spartan
 Spartan is a sensor node for Agnes, which serve as a swiss army knife for data acquisition and a controller in smart agriculture. This node can collect farm data and toggle switches to assist farmers in leading lives of greater productivity, profitability, and lower input costs.
@@ -66,6 +66,6 @@ The Agnes Node is open-sourced software licensed under the MIT license. See `LIC
 
 Sydel Palinlin - [@Andeng](https://www.linkedin.com/in/sydel-palinlin/) - [sydel.palinlin@gmail.com](mailto:sydel.palinlin@gmail.com)
 
-Project Link: [https://github.com/nerdmonkey/agnes-node](https://github.com/nerdmonkey/agnes-node)
+Project Link: [https://github.com/nerdmonkey/agnes-node](https://github.com/nerdmonkey/spartan-agnes-node)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
