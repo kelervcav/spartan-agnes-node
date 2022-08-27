@@ -11,7 +11,7 @@ from devices.database import engine, SessionLocal
 models.Base.metadata.create_all(bind=engine)
 
 description = """
-Spartan is a sensor node for Agnes, which serve as a swiss army knife for data acquisition in smart agriculture. 🚀
+Spartan is a sensor node for Agnes, which serve as a swiss army knife for data acquisition and a controller in smart agriculture. 🚀
 
 ## Devices
 
