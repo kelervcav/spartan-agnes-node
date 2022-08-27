@@ -66,6 +66,6 @@ The Agnes Node is open-sourced software licensed under the MIT license. See `LIC
 
 Sydel Palinlin - [@Andeng](https://www.linkedin.com/in/sydel-palinlin/) - [sydel.palinlin@gmail.com](mailto:sydel.palinlin@gmail.com)
 
-Project Link: [https://github.com/nerdmonkey/agnes-node](https://github.com/nerdmonkey/spartan-agnes-node)
+Project Link: [https://github.com/nerdmonkey/spartan-agnes-node](https://github.com/nerdmonkey/spartan-agnes-node)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
