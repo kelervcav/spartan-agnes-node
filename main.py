@@ -32,6 +32,10 @@ You will be able to:
 """
 
 tags_metadata = [
+     {
+        "name": "Overview",
+        "description": "Statistics and Analytics."
+    },
     {
         "name": "Devices",
         "description": "Operations with devices."
@@ -60,7 +64,7 @@ api.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @api.get('/api/devices', tags=["Devices"])
-async def create_database():
+async def list_devices():
     return {'message': 'Created'}
 
 @api.get("/", response_class=HTMLResponse, include_in_schema=False)
@@ -74,10 +78,6 @@ async def overview(request: Request):
 @api.get("/devices", response_class=HTMLResponse, include_in_schema=False)
 async def devices(request: Request):
     return templates.TemplateResponse("devices.html", {"request": request})
-
-@api.get("/records", response_class=HTMLResponse, include_in_schema=False)
-async def records(request: Request):
-    return templates.TemplateResponse("records.html", {"request": request})
 
 @api.get("/settings", response_class=HTMLResponse, include_in_schema=False)
 async def settings(request: Request):
