@@ -5,11 +5,18 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from typing import Optional
-import fastapi
+import devices.models as models
+from devices.database import engine, SessionLocal
+
+models.Base.metadata.create_all(bind=engine)
 
 api = FastAPI()
 api.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
+
+@api.get('/api/devices')
+async def create_database():
+    return {'message': 'Created'}
 
 @api.get("/", response_class=HTMLResponse)
 async def home(request: Request):
