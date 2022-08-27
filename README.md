@@ -24,9 +24,14 @@ uvicorn main:api --reload
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Add devices module
-    - [ ] Analog
-    - [ ] Digital
+- [ ] Create device
+- [ ] Read specific device
+- [ ] Edit specific device
+- [ ] Remove specific device
+- [ ] Read all the devices
+- [ ] Read all the devices by type
+- [ ] Retrieve specific sensor value
+- [ ] Switch on/off specific device
 - [ ] Add authentication
 
 
