@@ -51,7 +51,7 @@ tags_metadata = [
 ]
 
 api = FastAPI(
-        title="Spartan - Agnes Node",
+        title="Spartan - Agnes Sensor Node",
         description=description,
         version="0.3.0",
         terms_of_service="https://www.linkedin.com/in/sydel-palinlin/",
