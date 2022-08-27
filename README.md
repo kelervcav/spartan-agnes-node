@@ -1,7 +1,7 @@
 [<img src="docs/agnes_support.png" />](https://github.com/nerdmonkey/agnes-node)
 
-## Agnes Node
-Agnes Node is a system that will control all of the connected actuators and sensors. This node can collect farm data (data acquisition) and toggle switches to assist farmers in leading lives of greater productivity, profitability, and lower input costs.
+## Spartan
+Spartan is a sensor node for Agnes that will control all of the connected actuators and sensors. This node can collect farm data (data acquisition) and toggle switches to assist farmers in leading lives of greater productivity, profitability, and lower input costs.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

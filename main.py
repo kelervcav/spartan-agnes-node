@@ -11,12 +11,16 @@ from devices.database import engine, SessionLocal
 models.Base.metadata.create_all(bind=engine)
 
 description = """
-Agnes Node helps you do awesome stuff. 🚀
+Spartan is a sensor node for Agnes, which serve as a swiss army knife for data acquisition in smart agriculture. 🚀
 
 ## Devices
 
 You will be able to:
 
+* **Create device** (_not implemented_).
+* **Read specific device** (_not implemented_).
+* **Edit specific device** (_not implemented_).
+* **Remove specific device** (_not implemented_).
 * **Read all the devices** (_not implemented_).
 * **Read all the devices by type** (_not implemented_).
 * **Retrieve specific sensor value** (_not implemented_).
@@ -46,9 +50,8 @@ tags_metadata = [
     },
 ]
 
-
 api = FastAPI(
-        title="Agnes Node",
+        title="Spartan - Agnes Node",
         description=description,
         version="0.3.0",
         terms_of_service="https://www.linkedin.com/in/sydel-palinlin/",
