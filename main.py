@@ -20,7 +20,7 @@ You will be able to:
 
 * **Create device** (_not implemented_).
 * **Read specific device**
-* **Edit specific device** (_not implemented_).
+* **Edit specific device**
 * **Remove specific device** (_not implemented_).
 * **Read all the devices**
 * **Read all the devices by type** (_not implemented_).
@@ -115,6 +115,28 @@ async def store_device(device: Device, db: Session=Depends(get_db)):
         'data': device,
         'status': 201
     }
+
+@api.put('/api/devices/{id}', tags=["Devices"])
+async def update_device(id: int, device: Device, db: Session=Depends(get_db)):
+    data = db.query(models.Devices)\
+                    .filter(models.Devices.id == id)\
+                    .first()
+
+    if device is None:
+        raise HTTPException(status_code=404, detail="Device not found")
+
+    data.name = device.name
+    data.unit = device.unit
+    data.address = device.address
+
+    db.add(data)
+    db.commit()
+
+    return {
+        'data': device,
+        'status': 200
+    }
+
 
 @api.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def home(request: Request):
