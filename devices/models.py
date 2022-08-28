@@ -5,8 +5,7 @@ class Devices(Base):
     __tablename__ = "devices"
 
     id = Column(Integer, primary_key=True, index=True)
-    number = Column(Integer)
-    size = Column(Integer)
-    label = Column(String)
-    price = Column(Integer)
+    name = Column(String)
+    unit = Column(Integer)
+    address = Column(Integer)
     status = Column(Boolean, default=False)

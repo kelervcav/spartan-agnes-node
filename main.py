@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from uuid import UUID
 from fastapi import FastAPI, Depends, Request, HTTPException
 from fastapi.responses import HTMLResponse
@@ -71,6 +71,10 @@ def get_db():
     finally:
         db.close()
 
+class Device(BaseModel):
+    name: str
+    unit: int
+    address: int
 
 api.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
@@ -97,6 +101,20 @@ async def show_device(id: int, db: Session=Depends(get_db)):
     else:
         raise HTTPException(status_code=404, detail="Device not found")
 
+@api.post('/api/devices', tags=["Devices"])
+async def store_device(device: Device, db: Session=Depends(get_db)):
+    data = models.Devices()
+    data.nam = device.name
+    data.unit = device.unit
+    data.address = device.address
+
+    db.add(data)
+    db.commit()
+
+    return {
+        'data': device,
+        'status': 201
+    }
 
 @api.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def home(request: Request):
