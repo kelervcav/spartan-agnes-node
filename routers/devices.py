@@ -1,11 +1,10 @@
 import sys
 sys.path.append("..")
 
-from typing import Optional
 from fastapi import Depends, HTTPException, APIRouter
 import devices.models as models
 from sqlalchemy.orm import Session
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from devices.database import engine, SessionLocal
 
 def get_db():
