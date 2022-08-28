@@ -110,7 +110,7 @@ async def create_new_user(user: Register, db: Session = Depends(get_db)):
 
 
 @router.post("/token")
-async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(),
+async def create_access_token(form_data: OAuth2PasswordRequestForm = Depends(),
                                  db: Session = Depends(get_db)):
 
     user = authenticate_user(form_data.username, form_data.password, db)
