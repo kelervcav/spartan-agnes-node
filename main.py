@@ -1,11 +1,12 @@
 from pydantic import BaseModel
 from uuid import UUID
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from typing import Optional
 import devices.models as models
+from sqlalchemy.orm import Session
 from devices.database import engine, SessionLocal
 
 models.Base.metadata.create_all(bind=engine)
@@ -63,12 +64,24 @@ api = FastAPI(
         openapi_tags=tags_metadata
     )
 
+def get_db():
+    try:
+        db = SessionLocal()
+        yield db
+    finally:
+        db.close()
+
+
 api.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 @api.get('/api/devices', tags=["Devices"])
-async def list_devices():
-    return {'message': 'Created'}
+async def list_devices(db: Session=Depends(get_db)):
+    devices = db.query(models.Devices).all()
+    return {
+        'data': devices,
+        'status': 200
+    }
 
 @api.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def home(request: Request):
