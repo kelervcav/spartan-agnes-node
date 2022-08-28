@@ -137,6 +137,24 @@ async def update_device(id: int, device: Device, db: Session=Depends(get_db)):
         'status': 200
     }
 
+@api.delete('/api/devices/{id}', tags=["Devices"])
+async def delete_device(id: int, db: Session=Depends(get_db)):
+    data = db.query(models.Devices)\
+                    .filter(models.Devices.id == id)\
+                    .first()
+
+    if device is None:
+        raise HTTPException(status_code=404, detail="Device not found")
+
+    db.query(models.Devices)\
+        .filter(models.Devices.id == id)\
+        .delete()
+
+    db.commit()
+
+    return {
+        'status': 200
+    }
 
 @api.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def home(request: Request):
