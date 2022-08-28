@@ -25,13 +25,13 @@ uvicorn main:api --reload
 ## Roadmap
 
 - [x] Create device
-- [ ] Read specific device
-- [ ] Edit specific device
-- [ ] Remove specific device
-- [ ] Read all the devices
-- [ ] Read all the devices by type
+- [x] Read specific device
+- [x] Edit specific device
+- [x] Remove specific device
+- [x] Read all the devices
 - [ ] Retrieve specific sensor value
 - [ ] Switch on/off specific device
+- [ ] Add setting for the node
 - [ ] Add authentication
 
 
