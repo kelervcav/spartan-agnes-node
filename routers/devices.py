@@ -3,9 +3,9 @@ sys.path.append("..")
 
 from fastapi import Depends, HTTPException, APIRouter
 import devices.models as models
+from devices.database import engine, SessionLocal
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from devices.database import engine, SessionLocal
 
 def get_db():
     try:
