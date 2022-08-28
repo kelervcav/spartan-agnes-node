@@ -83,6 +83,16 @@ async def list_devices(db: Session=Depends(get_db)):
         'status': 200
     }
 
+@api.get('/api/devices/{id}', tags=["Devices"])
+async def show_device(id: int, db: Session=Depends(get_db)):
+    device = db.query(models.Devices)\
+                    .filter(models.Devices.id == id)\
+                    .first()
+    return {
+        'data': device,
+        'status': 200
+    }
+
 @api.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def home(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
