@@ -144,7 +144,7 @@ async def update_device(id: int, device: Device, db: Session=Depends(get_db)):
 
 @api.delete('/api/devices/{id}', tags=["Devices"])
 async def delete_device(id: int, db: Session=Depends(get_db)):
-    data = db.query(models.Devices)\
+    device = db.query(models.Devices)\
                     .filter(models.Devices.id == id)\
                     .first()
 
