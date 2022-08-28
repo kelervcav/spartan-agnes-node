@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from uuid import UUID
-from fastapi import FastAPI, Depends, Request
+from fastapi import FastAPI, Depends, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -19,10 +19,10 @@ Spartan is a sensor node for Agnes, which serve as a swiss army knife for data a
 You will be able to:
 
 * **Create device** (_not implemented_).
-* **Read specific device** (_not implemented_).
+* **Read specific device**
 * **Edit specific device** (_not implemented_).
 * **Remove specific device** (_not implemented_).
-* **Read all the devices** (_not implemented_).
+* **Read all the devices**
 * **Read all the devices by type** (_not implemented_).
 * **Retrieve specific sensor value** (_not implemented_).
 * **Switch on/off specific device** (_not implemented_).
@@ -88,10 +88,15 @@ async def show_device(id: int, db: Session=Depends(get_db)):
     device = db.query(models.Devices)\
                     .filter(models.Devices.id == id)\
                     .first()
-    return {
-        'data': device,
-        'status': 200
-    }
+
+    if device is not None:
+        return {
+            'data': device,
+            'status': 200
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Device not found")
+
 
 @api.get("/", response_class=HTMLResponse, include_in_schema=False)
 async def home(request: Request):
