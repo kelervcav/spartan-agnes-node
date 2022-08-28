@@ -123,7 +123,10 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
                                 user.id,
                                 expires_delta=token_expires)
 
-    return {"token": token}
+    return {
+        "data": token,
+        "status": 200
+    }
 
 
 def user_exception():
