@@ -5,5 +5,5 @@ from main import api
 client = TestClient(api)
 
 def test_can_fetch_devices():
-    response = client.get("/devices")
+    response = client.get("/api/devices")
     assert response.status_code == 200

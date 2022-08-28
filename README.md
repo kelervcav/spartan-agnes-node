@@ -24,7 +24,7 @@ uvicorn main:api --reload
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Create device
+- [ x ] Create device
 - [ ] Read specific device
 - [ ] Edit specific device
 - [ ] Remove specific device
