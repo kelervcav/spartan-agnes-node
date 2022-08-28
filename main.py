@@ -18,12 +18,11 @@ Spartan is a sensor node for Agnes, which serve as a swiss army knife for data a
 
 You will be able to:
 
-* **Create device** (_not implemented_).
+* **Create device**
 * **Read specific device**
 * **Edit specific device**
-* **Remove specific device** (_not implemented_).
+* **Remove specific device**
 * **Read all the devices**
-* **Read all the devices by type** (_not implemented_).
 * **Retrieve specific sensor value** (_not implemented_).
 * **Switch on/off specific device** (_not implemented_).
 
@@ -33,6 +32,12 @@ You will be able to:
 
 * **Update account settings** (_not implemented_).
 * **Set gateway details** (_not implemented_).
+
+## Authentication
+
+You will be able to:
+
+* **Login and get the token** (_not implemented_).
 
 """
 
