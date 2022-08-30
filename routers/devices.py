@@ -50,7 +50,7 @@ async def show_device(id: int, db: Session=Depends(get_db)):
 @router.post('/devices')
 async def store_device(device: Device, db: Session=Depends(get_db)):
     data = models.Devices()
-    data.nam = device.name
+    data.name = device.name
     data.unit = device.unit
     data.address = device.address
 
@@ -59,7 +59,7 @@ async def store_device(device: Device, db: Session=Depends(get_db)):
 
     return {
         'data': device,
-        'status': 201
+        'status': 200
     }
 
 @router.put('/devices/{id}')
