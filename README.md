@@ -14,7 +14,11 @@ git clone https://github.com/nerdmonkey/spartan-agnes-node.git
 ```sh
 pip install -r requirements.txt
 ```
-3. Run it
+3. Run migration
+```sh
+alembic upgrade head
+```
+4. Run it
 ```sh
 uvicorn main:api --reload
 ```
