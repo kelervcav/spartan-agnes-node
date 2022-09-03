@@ -3,8 +3,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from typing import Optional
-from devices.database import engine, SessionLocal
-from routers import devices, auth
+from config.database import engine, SessionLocal
+from app.routers import router as api_router
 
 description = """
 Spartan is a sensor node for Agnes, which serve as a swiss army knife for data acquisition and a controller in smart agriculture. 🚀
@@ -64,8 +64,7 @@ api = FastAPI(
         openapi_tags=tags_metadata
     )
 
-api.include_router(auth.router)
-api.include_router(devices.router)
+api.include_router(api_router)
 
 api.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
