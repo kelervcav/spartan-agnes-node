@@ -26,13 +26,13 @@ You will be able to:
 You will be able to:
 
 * **Update account settings** (_not implemented_).
-* **Set gateway details** (_not implemented_).
+* **Set gateway details**
 
 ## Authentication
 
 You will be able to:
 
-* **Login and get the token** (_not implemented_).
+* **Login and get the token**
 
 """
 
