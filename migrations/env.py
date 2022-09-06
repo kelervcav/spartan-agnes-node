@@ -6,13 +6,15 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from alembic import context
 import app.devices.models as devices_model
+import app.users.models as users_model
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
 fileConfig(config.config_file_name)
 target_metadata = [
-     devices_model.Base.metadata
+     devices_model.Base.metadata,
+     users_model.Base.metadata,
 ]
 
 # Interpret the config file for Python logging.
