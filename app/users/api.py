@@ -25,7 +25,7 @@ class User(BaseModel):
 
 router = APIRouter(
     prefix="/api",
-    tags=["Users"],
+    tags=["Authentication"],
     responses={404: {"description": "Not found"}}
 )
 
@@ -74,7 +74,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session=De
     }
 
 @router.get('/users', dependencies=[Depends(get_current_user)])
-async def list_users(db: Session=Depends(get_db)):  
+async def list_users(db: Session=Depends(get_db)):
     users = db.query(Users).all()
     return {
         'data': users,
