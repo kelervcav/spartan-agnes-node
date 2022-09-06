@@ -46,6 +46,10 @@ tags_metadata = [
         "description": "Operations with devices."
     },
     {
+        "name": "Authentication",
+        "description": "User validation and verification."
+    },
+    {
         "name": "Settings",
         "description": "Manage settings."
     },
