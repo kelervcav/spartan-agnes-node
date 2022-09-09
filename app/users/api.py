@@ -72,11 +72,3 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session=De
         "access_token": create_access_token(user.username),
         "refresh_token": create_refresh_token(user.username),
     }
-
-@router.get('/users', dependencies=[Depends(get_current_user)])
-async def list_users(db: Session=Depends(get_db)):
-    users = db.query(Users).all()
-    return {
-        'data': users,
-        'status': 200
-    }
