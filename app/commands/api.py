@@ -15,13 +15,12 @@ def get_db():
     finally:
         db.close()
 
-class Command(BaseModel):
+class InfoCommand(BaseModel):
     device_id: int
 
-class Device(BaseModel):
-    name: str
-    unit: int
-    address: int
+class WorkCommand(BaseModel):
+    device_id: int
+    value: int
 
 router = APIRouter(
     prefix="/api",
@@ -30,7 +29,7 @@ router = APIRouter(
 )
 
 @router.post('/commands/info')
-async def fetch_info_command(command: Command, db: Session=Depends(get_db)):
+async def fetch_info_command(command: InfoCommand, db: Session=Depends(get_db)):
 
     # Get device info
     data = db.query(Devices)\
@@ -38,34 +37,40 @@ async def fetch_info_command(command: Command, db: Session=Depends(get_db)):
                     .first()
 
     # Hardware communication here
+    address = data.address
+    unit = data.unit
 
     # Get result value
     get_this_value = 30
 
     return {
         'data': {
-            'address': data.address,
-            'unit': data.unit,
+            'address': address,
+            'unit': unit,
             'value': get_this_value
         },
         'status': 200
     }
 
 @router.post('/commands/work')
-async def do_work_command(command: Command, db: Session=Depends(get_db)):
+async def do_work_command(command: WorkCommand, db: Session=Depends(get_db)):
 
-      # Get device info
+    # Get device info
     data = db.query(Devices)\
                     .filter(Devices.id == command.device_id)\
                     .first()
+
+    # Hardware communication here
+    address = data.address
+    unit = data.unit
 
     # Set value to the device
     set_this_value = True
 
     return {
         'data': {
-            'address': data.address,
-            'unit': data.unit,
+            'address': address,
+            'unit': unit,
             'value': set_this_value
         },
         'status': 200
