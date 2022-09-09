@@ -25,6 +25,7 @@ You will be able to:
 * **Remove specific device**
 * **Read all the devices**
 
+
 ## Commands
 
 You will be able to:
