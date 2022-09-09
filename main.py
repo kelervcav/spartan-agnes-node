@@ -46,6 +46,10 @@ tags_metadata = [
         "description": "Operations with devices."
     },
     {
+        "name": "Commands",
+        "description": "Operations with commands."
+    },
+    {
         "name": "Authentication",
         "description": "User validation and verification."
     },
