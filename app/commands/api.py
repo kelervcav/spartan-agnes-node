@@ -15,6 +15,7 @@ def get_db():
         db.close()
 
 class Command(BaseModel):
+    name: str
     device_id: int
     address: str
     value: str
@@ -36,6 +37,7 @@ async def list_commands(db: Session=Depends(get_db)):
 @router.post('/commands')
 async def store_command(command: Command, db: Session=Depends(get_db)):
     data = Commands()
+    data.name = command.name
     data.address = command.address
     data.value = command.value
     data.device_id = command.device_id
@@ -61,3 +63,45 @@ async def show_command(id: int, db: Session=Depends(get_db)):
         }
     else:
         raise HTTPException(status_code=404, detail="Command not found")
+
+@router.put('/commands/{id}')
+async def update_command(id: int, command: Command, db: Session=Depends(get_db)):
+    data = db.query(Commands)\
+                    .filter(Commands.id == id)\
+                    .first()
+
+    if command is None:
+        raise HTTPException(status_code=404, detail="Command not found")
+
+    data.name = command.name
+    data.address = command.address
+    data.value = command.value
+    data.device_id = command.device_id
+
+
+    db.add(data)
+    db.commit()
+
+    return {
+        'data': command,
+        'status': 200
+    }
+
+@router.delete('/commands/{id}')
+async def delete_command(id: int, db: Session=Depends(get_db)):
+    command = db.query(Commands)\
+                    .filter(Commands.id == id)\
+                    .first()
+
+    if command is None:
+        raise HTTPException(status_code=404, detail="Command not found")
+
+    db.query(Commands)\
+        .filter(Commands.id == id)\
+        .delete()
+
+    db.commit()
+
+    return {
+        'status': 200
+    }
