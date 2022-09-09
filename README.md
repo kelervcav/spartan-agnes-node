@@ -14,11 +14,12 @@ git clone https://github.com/nerdmonkey/spartan-agnes-node.git
 ```sh
 pip install -r requirements.txt
 ```
-3. Run migration
+3. Copy .env.example as .env and update variables
+4. Run migration
 ```sh
 alembic upgrade head
 ```
-4. Run it
+5. Run it
 ```sh
 uvicorn main:api --reload
 ```
