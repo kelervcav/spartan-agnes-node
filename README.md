@@ -14,7 +14,7 @@ git clone https://github.com/nerdmonkey/spartan-agnes-node.git
 ```sh
 pip install -r requirements.txt
 ```
-3. Copy .env.example as .env and update variables
+3. Copy .env.example as .env and update settings
 4. Run migration
 ```sh
 alembic upgrade head
