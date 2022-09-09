@@ -28,4 +28,4 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    p.drop_table('users')
+    op.drop_table('users')
