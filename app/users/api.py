@@ -1,3 +1,6 @@
+import sys
+sys.path.append("..")
+
 from fastapi import FastAPI, status, HTTPException, APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.responses import RedirectResponse
@@ -26,7 +29,7 @@ class User(BaseModel):
 router = APIRouter(
     prefix="/api",
     tags=["Authentication"],
-    responses={404: {"description": "Not found"}}
+    responses={404: {"description": "Resource not found"}}
 )
 
 def user_exception():
