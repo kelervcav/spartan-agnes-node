@@ -27,7 +27,7 @@ router = APIRouter(
 )
 
 @router.get('/commands/info')
-async def store_command(command: Command, db: Session=Depends(get_db)):
+async def fetch_info_command(command: Command, db: Session=Depends(get_db)):
     data = Commands()
 
     data.device_id = command.device_id
@@ -46,7 +46,7 @@ async def store_command(command: Command, db: Session=Depends(get_db)):
     }
 
 @router.post('/commands/work')
-async def store_command(command: Command, db: Session=Depends(get_db)):
+async def do_work_command(command: Command, db: Session=Depends(get_db)):
     data = Commands()
 
     data.device_id = command.device_id
