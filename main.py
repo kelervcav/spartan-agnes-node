@@ -1,13 +1,19 @@
 from fastapi import FastAPI, Depends, Request, HTTPException
+from functools import lru_cache
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from typing import Optional
 from config.database import engine, SessionLocal
 from app.routers import router as api_router
+from config.settings import Settings
 
-description = """
-Spartan is a sensor node for Agnes, which serve as a swiss army knife for data acquisition and a controller in smart agriculture. 🚀
+@lru_cache()
+def get_settings():
+    return Settings()
+
+description = f"""
+{get_settings().APP_NAME} is a sensor node for Agnes, which serve as a swiss army knife for data acquisition and a controller in smart agriculture. 🚀
 
 ## Devices
 
@@ -37,10 +43,6 @@ You will be able to:
 """
 
 tags_metadata = [
-     {
-        "name": "Overview",
-        "description": "Statistics and Analytics."
-    },
     {
         "name": "Devices",
         "description": "Operations with devices."
@@ -60,7 +62,7 @@ tags_metadata = [
 ]
 
 api = FastAPI(
-        title="Spartan - Sensor Node",
+        title="Spartan",
         description=description,
         version="0.3.0",
         terms_of_service="https://www.linkedin.com/in/sydel-palinlin/",
