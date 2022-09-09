@@ -18,7 +18,14 @@ depends_on = None
 
 def upgrade() -> None:
     op.create_table('settings',
-        sa.Column('name', sa.String(), nullable=False)
+        sa.Column('firstname', sa.String(), nullable=True),
+        sa.Column('lastname', sa.String(), nullable=True),
+        sa.Column('ip_address', sa.String(), nullable=True),
+        sa.Column('subnet_mask', sa.String(), nullable=True),
+        sa.Column('gateway', sa.String(), nullable=True),
+        sa.Column('dns', sa.String(), nullable=True),
+        sa.Column('longitude', sa.String(), nullable=True),
+        sa.Column('latitude', sa.String(), nullable=True),
     )
 
 
