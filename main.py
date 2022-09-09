@@ -41,6 +41,7 @@ You will be able to:
 * **Update account settings** (_not implemented_).
 * **Set gateway details**
 
+
 ## Authentication
 
 You will be able to:
