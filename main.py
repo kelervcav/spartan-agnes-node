@@ -38,8 +38,10 @@ You will be able to:
 
 You will be able to:
 
-* **Update account settings** (_not implemented_).
-* **Set gateway details**
+* **Read and update profile settings** (_not implemented_).
+* **Read and update account settings** (_not implemented_).
+* **Read and update network settings** (_not implemented_).
+* **Read and update location settings** (_not implemented_).
 
 
 ## Authentication
