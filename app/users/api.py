@@ -48,23 +48,8 @@ def authenticate_user(username: str, password: str, db):
 
     return user
 
-@router.post('/signup', summary="Create new user")
-async def create_user(user: User, db: Session=Depends(get_db)):
-    data = Users()
-    data.email = user.email
-    data.username = user.username
-    data.firstname = user.firstname
-    data.lastname = user.lastname
-    data.password = get_password_hash(user.password)
-    db.add(data)
-    db.commit()
-    return {
-        'data': user,
-        'status': 200
-    }
 
-
-@router.post('/login', summary="Create access and refresh tokens for user")
+@router.post('/login', summary="Verify user and create new tokens")
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session=Depends(get_db)):
     user = authenticate_user(form_data.username, form_data.password, db)
     return {
