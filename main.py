@@ -24,8 +24,14 @@ You will be able to:
 * **Edit specific device**
 * **Remove specific device**
 * **Read all the devices**
+
+## Commands
+
+You will be able to:
+
 * **Retrieve specific sensor value** (_not implemented_).
 * **Switch on/off specific device** (_not implemented_).
+
 
 ## Settings
 
