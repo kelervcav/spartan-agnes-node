@@ -5,11 +5,16 @@ from fastapi import FastAPI, status, HTTPException, APIRouter, Depends
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.responses import RedirectResponse
 from .models import Users
-from .utils import get_password_hash, verify_password, create_access_token, create_refresh_token
+from .services.utils import (
+    get_password_hash, 
+    verify_password, 
+    create_access_token, 
+    create_refresh_token
+)
 from config.database import engine, SessionLocal
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from .auth import get_current_user
+from .services.auth import get_current_user
 
 
 def get_db():
