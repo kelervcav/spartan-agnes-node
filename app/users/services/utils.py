@@ -1,13 +1,14 @@
 from datetime import datetime, timedelta
 from jose import jwt, JWTError
 from passlib.context import CryptContext
+from config.settings import settings
 
 
-JWT_SECRET_KEY = "fkw2hhTPuNAcKXLKxPJ2TgroiUbnbm4p"
-JWT_REFRESH_SECRET_KEY = "SflKxwRJSMeKKF2QT4fwpMeJf36PO"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 15  # 15 minutes
-REFRESH_TOKEN_EXPIRE_MINUTES = 60 # 60 minutes
+JWT_SECRET_KEY = settings.JWT_SECRET_KEY
+JWT_REFRESH_SECRET_KEY = settings.JWT_REFRESH_SECRET_KEY
+ALGORITHM = settings.ALGORITHM
+ACCESS_TOKEN_EXPIRE_MINUTES = settings.ACCESS_TOKEN_EXPIRE_MINUTES 
+REFRESH_TOKEN_EXPIRE_MINUTES = settings.REFRESH_TOKEN_EXPIRE_MINUTES
 
 password_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
