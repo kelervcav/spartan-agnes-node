@@ -5,14 +5,15 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from config.database import engine, SessionLocal
 from .utils import ALGORITHM, JWT_SECRET_KEY
-from .models import Users
+from ..models import Users
 from jose import jwt
 from pydantic import ValidationError, BaseModel
+from config.settings import settings
 
 
 oauth2_scheme = OAuth2PasswordBearer(
-    tokenUrl="/api/login",
-    scheme_name="JWT"
+    tokenUrl=settings.TOKEN_URL,
+    scheme_name=settings.SCHEME_NAME
 )
 
 def get_db():
