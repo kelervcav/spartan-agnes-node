@@ -4,7 +4,10 @@ from config.database import Base
 
 class Settings(Base):
     __tablename__ = "settings"
+
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    firstname = Column(String)
+    lastname = Column(String)
     ip_address = Column(String)
     subnet_mask = Column(String)
     gateway = Column(String)

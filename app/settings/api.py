@@ -15,6 +15,16 @@ def get_db():
         db.close()
 
 
+class Setting(BaseModel):
+    firstname: str
+    lastname: str
+    ip_address: str
+    subnet_mask: str
+    gateway: str
+    dns: str
+    longitude: str
+    latitude: str
+
 class ProfileSetting(BaseModel):
     firstname: str
     lastname: str
@@ -37,23 +47,17 @@ router = APIRouter(
 )
 
 
-@router.get('/settings/profile')
-async def show_profile_settings(db: Session=Depends(get_db)):
-    setting = db.query(Settings).first()
-    return {
-        'data': setting,
-        'status': 200
-    }
-
-@router.put('/settings/profile')
-async def update_profile_settings(setting: ProfileSetting, db: Session=Depends(get_db)):
-    data = db.query(Settings).first()
-
-    if data is None:
-        raise HTTPException(status_code=404, detail="Settings not found")
-
-    data.name = setting.firstname
-    data.unit = setting.lastname
+@router.post('/settings')
+async def store_setting(setting: Setting, db: Session=Depends(get_db)):
+    data = Settings()
+    data.firstname = setting.firstname
+    data.lastname = setting.lastname
+    data.ip_address = setting.ip_address
+    data.subnet_mask = setting.subnet_mask
+    data.gateway = setting.gateway
+    data.dns = setting.dns
+    data.longitude = setting.longitude
+    data.latitude = setting.latitude
 
     db.add(data)
     db.commit()
@@ -64,27 +68,66 @@ async def update_profile_settings(setting: ProfileSetting, db: Session=Depends(g
     }
 
 
-@router.get('/settings/network')
-async def show_network_settings(db: Session=Depends(get_db)):
-    setting = db.query(Settings).first()
+@router.get('/settings/{id}/profile')
+async def show_profile_settings(id: int, db: Session=Depends(get_db)):
+    setting = db.query(Settings)\
+                    .filter(Settings.id == id)\
+                    .first()
+
+    if setting is not None:
+        return {
+            'data': setting,
+            'status': 200
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Profile not found")
+
+@router.put('/settings/{id}/profile')
+async def update_profile_settings(id: int, setting: ProfileSetting, db: Session=Depends(get_db)):
+    data = db.query(Settings)\
+                    .filter(Settings.id == id)\
+                    .first()
+
+    if data is None:
+        raise HTTPException(status_code=404, detail="Profile not found")
+
+    data.firstname = setting.firstname
+    data.lastname = setting.lastname
+
+    db.commit()
+
     return {
         'data': setting,
         'status': 200
     }
 
-@router.put('/settings/network')
-async def update_network_settings(setting: NetworkSetting, db: Session=Depends(get_db)):
+
+@router.get('/settings/{id}/network')
+async def show_network_settings(id: int, db: Session=Depends(get_db)):
+    setting = db.query(Settings)\
+                    .filter(Settings.id == id)\
+                    .first()
+
+    if setting is not None:
+        return {
+            'data': setting,
+            'status': 200
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Network not found")
+
+@router.put('/settings/{id}/network')
+async def update_network_settings(id: int, setting: NetworkSetting, db: Session=Depends(get_db)):
     data = db.query(Settings).first()
 
     if data is None:
-        raise HTTPException(status_code=404, detail="Settings not found")
+        raise HTTPException(status_code=404, detail="Network not found")
 
     data.ip_address = setting.ip_address
     data.subnet_mask = setting.subnet_mask
     data.gateway = setting.gateway
     data.dns = setting.dns
 
-    db.add(data)
     db.commit()
 
     return {
@@ -93,25 +136,30 @@ async def update_network_settings(setting: NetworkSetting, db: Session=Depends(g
     }
 
 
-@router.get('/settings/location')
-async def show_location_settings(db: Session=Depends(get_db)):
-    setting = db.query(Settings).first()
-    return {
-        'data': setting,
-        'status': 200
-    }
+@router.get('/settings/{id}/location')
+async def show_location_settings(id: int, db: Session=Depends(get_db)):
+    setting = db.query(Settings)\
+                    .filter(Settings.id == id)\
+                    .first()
 
-@router.put('/settings/location')
-async def update_location_settings(setting: LocationSetting, db: Session=Depends(get_db)):
+    if setting is not None:
+        return {
+            'data': setting,
+            'status': 200
+        }
+    else:
+        raise HTTPException(status_code=404, detail="Location not found")
+
+@router.put('/settings/{id}/location')
+async def update_location_settings(id: int, setting: LocationSetting, db: Session=Depends(get_db)):
     data = db.query(Settings).first()
 
     if data is None:
-        raise HTTPException(status_code=404, detail="Settings not found")
+        raise HTTPException(status_code=404, detail="Location not found")
 
     data.longitude = setting.longitude
     data.latitude = setting.latitude
 
-    db.add(data)
     db.commit()
 
     return {
