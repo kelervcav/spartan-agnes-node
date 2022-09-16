@@ -1,0 +1,33 @@
+version: "3.3"
+
+services:
+
+  #API Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spartan-api
+    volumes:
+      - .:/app
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    container_name: spartan-webserver
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge

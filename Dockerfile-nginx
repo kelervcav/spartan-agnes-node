@@ -1,0 +1,5 @@
+FROM nginx:latest
+
+# Override the default nginx configuration file
+RUN rm /etc/nginx/conf.d/*
+COPY nginx.conf /etc/nginx/conf.d/
